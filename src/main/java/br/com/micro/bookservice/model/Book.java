@@ -1,5 +1,6 @@
 package br.com.micro.bookservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.*;
 
@@ -15,6 +16,7 @@ import java.util.Date;
 @EqualsAndHashCode
 @Builder
 @Entity(name="book")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Book implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
