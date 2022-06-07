@@ -4,6 +4,9 @@ import br.com.micro.bookservice.model.Book;
 import br.com.micro.bookservice.proxy.CambioProxy;
 import br.com.micro.bookservice.repository.BookRepository;
 import br.com.micro.bookservice.response.Cambio;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
+import io.github.resilience4j.retry.annotation.Retry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +30,9 @@ public class BookController {
     private CambioProxy cambioProxy;
 
     @GetMapping(value="/{id}/{currency}")
+    //@Retry(name = "default", fallbackMethod = "fallBackMethod")
+    //@CircuitBreaker(name = "default", fallbackMethod = "fallBackMethod")
+    @RateLimiter(name = "default")
     public Book findBook(@PathVariable("id") Long id,
                          @PathVariable("currency") String currency){
 
