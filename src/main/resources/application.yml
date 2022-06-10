@@ -36,6 +36,9 @@ spring:
     schemas: book_service
     user: postgres
     password: 1234
+  sleuth:
+    sampler:
+      probability: 1.0
   jackson:
     default-property-inclusion: NON_NULL
     serialization:
