@@ -46,3 +46,7 @@ spring:
 springdoc:
   api-docs:
     path: book-service/v3/api-docs
+feign:
+  client:
+    url:
+      gatewayUrl: http://localhost:8765/

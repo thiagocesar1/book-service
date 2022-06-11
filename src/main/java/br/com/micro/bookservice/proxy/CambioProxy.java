@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.math.BigDecimal;
 
-@FeignClient(name = "cambio-service", url = "localhost:8765")
+@FeignClient(name = "cambio-service", url = "${feign.client.url.gatewayUrl}")
 public interface CambioProxy {
     @GetMapping(value="/cambio-service/{amount}/{from}/{to}")
     Cambio getCambio(@PathVariable("amount") BigDecimal amount,
